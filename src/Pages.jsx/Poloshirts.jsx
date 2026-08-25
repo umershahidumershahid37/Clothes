@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Heart, Sparkles } from "lucide-react";
+import { Heart, Sparkles, ShoppingBag } from "lucide-react";
 import Navbar from "../Component/Navbar";
 import Sidebar from "../Component/Sidebar";
 
@@ -10,6 +10,13 @@ const Poloshirts = () => {
   // Reusable helper function for product cards navigation
   const handleViewProduct = (product) => {
     navigate('/formal-shirt-detail', { state: { product } });
+  };
+
+  // Add to cart handler
+  const handleAddToCart = (e, product) => {
+    e.stopPropagation();
+    // Yahan aap apna cart ka logic ya state add kar sakte hain
+    alert(`${product.name} added to cart successfully!`);
   };
 
   // Formal Shirts Data
@@ -55,7 +62,7 @@ const Poloshirts = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-4",
+      id: "formal-5",
       name: "Striped Corporate Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
@@ -65,7 +72,7 @@ const Poloshirts = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-4",
+      id: "formal-6",
       name: "Striped Corporate Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
@@ -75,7 +82,7 @@ const Poloshirts = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-4",
+      id: "formal-7",
       name: "Striped Corporate Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
@@ -85,7 +92,7 @@ const Poloshirts = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-4",
+      id: "formal-8",
       name: "Striped Corporate Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
@@ -95,7 +102,7 @@ const Poloshirts = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-4",
+      id: "formal-9",
       name: "Striped Corporate Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
@@ -105,7 +112,7 @@ const Poloshirts = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-4",
+      id: "formal-10",
       name: "Striped Corporate Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
@@ -115,7 +122,7 @@ const Poloshirts = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-4",
+      id: "formal-11",
       name: "Striped Corporate Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
@@ -125,7 +132,7 @@ const Poloshirts = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-4",
+      id: "formal-12",
       name: "Striped Corporate Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
@@ -135,7 +142,7 @@ const Poloshirts = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-4",
+      id: "formal-13",
       name: "Striped Corporate Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
@@ -145,7 +152,7 @@ const Poloshirts = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-4",
+      id: "formal-14",
       name: "Striped Corporate Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
@@ -154,7 +161,6 @@ const Poloshirts = () => {
       image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     }
-
   ];
 
   return (
@@ -163,7 +169,7 @@ const Poloshirts = () => {
       <Navbar />
 
       {/* Main Container with Sidebar & Content */}
-      <div className="flex flex-col lg:flex-row w-full gap-8  ">
+      <div className="flex flex-col lg:flex-row w-full gap-8">
         {/* Left Side: Sidebar */}
         <Sidebar />
 
@@ -212,11 +218,11 @@ const Poloshirts = () => {
             {formalShirts.map((product) => (
               <div
                 key={product.id}
-                className="bg-white flex flex-col justify-between group cursor-pointer"
+                className="bg-white flex flex-col justify-between group cursor-pointer border border-neutral-100 p-3 rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
                 onClick={() => handleViewProduct(product)}
               >
                 {/* Card Image & Wishlist Icon */}
-                <div className="relative bg-gray-100 aspect-[4/5] overflow-hidden rounded-none">
+                <div className="relative bg-gray-100 aspect-[4/5] overflow-hidden rounded-lg">
                   <img
                     src={product.image}
                     alt={product.name}
@@ -225,6 +231,7 @@ const Poloshirts = () => {
                   <button 
                     onClick={(e) => { e.stopPropagation(); alert('Added to wishlist!'); }}
                     className="absolute top-3 right-3 bg-white/90 backdrop-blur-md p-2 rounded-full shadow-sm hover:bg-white transition-all"
+                    aria-label="Wishlist"
                   >
                     <Heart className="w-4 h-4 text-gray-700 hover:text-red-500 transition-colors" />
                   </button>
@@ -248,13 +255,23 @@ const Poloshirts = () => {
                     </div>
                   </div>
 
-                  {/* View Details Button */}
-                  <button
-                    onClick={(e) => { e.stopPropagation(); handleViewProduct(product); }}
-                    className="mt-3 w-fit bg-black text-white text-xs font-medium py-2 px-5 rounded-full shadow-md hover:bg-gray-800 active:scale-95 transition-all duration-200 cursor-pointer"
-                  >
-                    View Details
-                  </button>
+                  {/* Buttons Container: View Details & Add to Cart */}
+                  <div className="mt-4 flex items-center gap-2">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); handleViewProduct(product); }}
+                      className="flex-1 bg-black text-white text-xs font-medium py-2.5 px-3 rounded-full shadow-sm hover:bg-gray-800 active:scale-95 transition-all duration-200 cursor-pointer text-center"
+                    >
+                      View Details
+                    </button>
+                    <button
+                      onClick={(e) => handleAddToCart(e, product)}
+                      className="flex items-center justify-center bg-[#B98A55] text-white text-xs font-medium p-2.5 rounded-full shadow-sm hover:bg-[#a67947] active:scale-95 transition-all duration-200 cursor-pointer"
+                      title="Add to Cart"
+                      aria-label="Add to Cart"
+                    >
+                      <ShoppingBag className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}

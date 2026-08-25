@@ -67,9 +67,9 @@ const Bestseller = () => {
             Explore our most-loved styles crafted with premium fabrics and modern tailoring for the contemporary gentleman.
           </p>
 
-          {/* Button */}
+          {/* Button - Connected to /men route */}
           <Link
-            to="/shop"
+            to="/men"
             className="mt-6 inline-flex items-center justify-center rounded-full bg-black px-7 py-3 text-xs sm:text-sm font-semibold text-white shadow-md transition-all duration-300 hover:bg-[#b98a55] hover:shadow-xl hover:-translate-y-0.5"
           >
             View All Products
@@ -133,7 +133,7 @@ const Bestseller = () => {
                 {/* VIEW DETAILS BUTTON */}
                 <div className="p-4 sm:p-5 pt-0">
                   <Link
-                    to={`/product/${index}`}
+                    to={`/product/${product.id}`}
                     className="w-full inline-flex items-center justify-center rounded-full bg-neutral-900 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all duration-300 hover:bg-[#b98a55] shadow-sm"
                   >
                     View Details

@@ -1,9 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
     <section className="relative bg-[#FAF9F6] py-10 sm:py-14 md:py-18 lg:py-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      {/* Background Video Player with Overlay */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover object-center filter contrast-125 opacity-25"
+        >
+          {/* Direct stable video link */}
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {/* Soft overlay to blend video nicely with the background tone */}
+        <div className="absolute inset-0 bg-[#FAF9F6]/80 backdrop-blur-[1px]"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-center">
           
           {/* Left Content Area (5 Columns) */}
@@ -23,14 +43,14 @@ const HeroSection = () => {
               In-style profile, redefining modern charm, movement, designed perfectly for your everyday look.
             </p>
 
-            {/* Action Buttons */}
+            {/* Action Buttons - Connected to /men route */}
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
-              <a
-                href="#men"
-                className="px-7 sm:px-9 py-3 sm:py-3.5 bg-black text-white text-xs sm:text-sm font-semibold rounded-xl hover:bg-[#C5A059] transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5"
+              <Link
+                to="/men"
+                className="px-7 sm:px-9 py-3 sm:py-3.5 bg-black text-white text-xs sm:text-sm font-semibold rounded-xl hover:bg-[#C5A059] transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 inline-block text-center"
               >
                 SHOP MEN
-              </a>
+              </Link>
             </div>
           </div>
 

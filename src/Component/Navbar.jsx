@@ -23,7 +23,7 @@ const Navbar = () => {
           {/* 2. Desktop Links */}
           <div className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8 text-xs lg:text-sm font-medium">
             <Link to="/" className="text-gray-700 hover:text-black transition-colors py-2">HOME</Link>
-            <Link to="/men" className="text-gray-700 hover:text-black transition-colors py-2">MEN,S</Link>
+            <Link to="/men" className="text-gray-700 hover:text-black transition-colors py-2">MEN</Link>
             <Link to="/collections" className="text-gray-700 hover:text-black transition-colors py-2">COLLECTIONS</Link>
             <Link to="/about" className="text-gray-700 hover:text-black transition-colors py-2">ABOUT</Link>
             <Link to="/blog" className="text-gray-700 hover:text-black transition-colors py-2">BLOG</Link>
@@ -94,7 +94,6 @@ const Navbar = () => {
             <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
               <Link to="/" onClick={() => setIsOpen(false)} className="block text-gray-800 hover:text-black font-semibold text-base py-2 border-b border-gray-100">HOME</Link>
               <Link to="/men" onClick={() => setIsOpen(false)} className="block text-gray-800 hover:text-black font-semibold text-base py-2 border-b border-gray-100">MEN</Link>
-              <Link to="/women" onClick={() => setIsOpen(false)} className="block text-gray-800 hover:text-black font-semibold text-base py-2 border-b border-gray-100">WOMEN</Link>
               <Link to="/collections" onClick={() => setIsOpen(false)} className="block text-gray-800 hover:text-black font-semibold text-base py-2 border-b border-gray-100">COLLECTIONS</Link>
               <Link to="/about" onClick={() => setIsOpen(false)} className="block text-gray-800 hover:text-black font-semibold text-base py-2 border-b border-gray-100">ABOUT</Link>
               <Link to="/blog" onClick={() => setIsOpen(false)} className="block text-gray-800 hover:text-black font-semibold text-base py-2 border-b border-gray-100">BLOG</Link>
