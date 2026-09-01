@@ -18,6 +18,7 @@ import Contact from './Pages.jsx/Contact'
 import Collections from './Pages.jsx/Collections'
 import About from './Pages.jsx/About'
 import Blog from './Pages.jsx/Blog'
+import CartPage from './Component/CartPage'
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/men" element={<Mens />} />
@@ -40,7 +42,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/collections" element={<Collections />} />
         <Route path="/about" element={<About />} />
-        <Route path="/blog" element={<Blog/>} />
+<Route path="/blog" element={<Blog />} />
         
 
 

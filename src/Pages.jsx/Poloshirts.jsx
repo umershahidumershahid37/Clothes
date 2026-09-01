@@ -9,7 +9,7 @@ const Poloshirts = () => {
 
   // Reusable helper function for product cards navigation
   const handleViewProduct = (product) => {
-    navigate('/formal-shirt-detail', { state: { product } });
+    navigate(`/product/${product.id}`, { state: { product, from: '/polo-shirts' } });
   };
 
   // Add to cart handler
@@ -63,87 +63,87 @@ const Poloshirts = () => {
     },
     {
       id: "formal-5",
-      name: "Striped Corporate Shirt",
+      name: "Premium Polo Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
+      image: "https://images.unsplash.com/photo-1617457449829-17c79b4ebaaa?auto=format&fit=crop&q=80&w=500",
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
       id: "formal-6",
-      name: "Striped Corporate Shirt",
+      name: "Casual Polo Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
+      image: "https://images.unsplash.com/photo-1612036782180-69c0cecdbf51?auto=format&fit=crop&q=80&w=500",
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
       id: "formal-7",
-      name: "Striped Corporate Shirt",
+      name: "Classic Polo Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
+      image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=500",
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
       id: "formal-8",
-      name: "Striped Corporate Shirt",
+      name: "Elegant Polo Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
+      image: "https://images.unsplash.com/photo-1559155260-a57d2e9e2407?auto=format&fit=crop&q=80&w=500",
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
       id: "formal-9",
-      name: "Striped Corporate Shirt",
+      name: "Sports Polo Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
+      image: "https://images.unsplash.com/photo-1542272604-787c62d465d1?auto=format&fit=crop&q=80&w=500",
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
       id: "formal-10",
-      name: "Striped Corporate Shirt",
+      name: "Designer Polo Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=500",
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
       id: "formal-11",
-      name: "Striped Corporate Shirt",
+      name: "Summer Polo Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
+      image: "https://images.unsplash.com/photo-1605286372692-4d440d36fe3e?auto=format&fit=crop&q=80&w=500",
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
       id: "formal-12",
-      name: "Striped Corporate Shirt",
+      name: "Winter Polo Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
+      image: "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&q=80&w=500",
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
       id: "formal-13",
-      name: "Striped Corporate Shirt",
+      name: "Casual Fit Polo Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
@@ -214,7 +214,7 @@ const Poloshirts = () => {
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {formalShirts.map((product) => (
               <div
                 key={product.id}

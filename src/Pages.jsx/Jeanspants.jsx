@@ -9,7 +9,7 @@ const Jeanspants = () => {
 
   // Reusable helper function for product cards navigation
   const handleViewProduct = (product) => {
-    navigate('/formal-shirt-detail', { state: { product } });
+    navigate(`/product/${product.id}`, { state: { product, from: '/jeans-pants' } });
   };
 
   // Add to cart handler
@@ -19,11 +19,11 @@ const Jeanspants = () => {
     alert(`${product.name} added to cart successfully!`);
   };
 
-  // Formal Shirts Data
+  // Jeans Pants Data
   const formalShirts = [
     {
-      id: "formal-1",
-      name: "Classic Executive White Shirt",
+      id: "jeans-1",
+      name: "Classic Blue Jeans",
       price: "Rs. 3,490",
       category: "Formal Shirts",
       material: "100% Premium Cotton",
@@ -32,8 +32,8 @@ const Jeanspants = () => {
       description: "A timeless classic executive white shirt tailored for supreme comfort and professional elegance."
     },
     {
-      id: "formal-2",
-      name: "Midnight Blue Formal Shirt",
+      id: "jeans-2",
+      name: "Dark Wash Jeans",
       price: "Rs. 3,690",
       category: "Formal Shirts",
       material: "Cotton Blend",
@@ -42,8 +42,8 @@ const Jeanspants = () => {
       description: "Sophisticated midnight blue shirt designed to make a strong impression at business meetings."
     },
     {
-      id: "formal-3",
-      name: "Charcoal Grey Formal Shirt",
+      id: "jeans-3",
+      name: "Light Blue Jeans",
       price: "Rs. 3,890",
       category: "Formal Shirts",
       material: "Fine Twill Cotton",
@@ -149,10 +149,10 @@ const Jeanspants = () => {
       material: "Cotton Rich",
       fit: "Slim Fit",
       image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      description: "Professional jeans designed for everyday casual wear with enhanced durability."
     },
     {
-      id: "formal-14",
+      id: "jeans-4",
       name: "Striped Corporate Shirt",
       price: "Rs. 3,290",
       category: "Formal Shirts",
@@ -214,7 +214,7 @@ const Jeanspants = () => {
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {formalShirts.map((product) => (
               <div
                 key={product.id}

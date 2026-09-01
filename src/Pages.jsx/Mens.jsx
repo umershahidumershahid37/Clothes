@@ -9,7 +9,7 @@ const Mens = () => {
 
   // Reusable helper function for product cards navigation passing the full product state
   const handleViewProduct = (product) => {
-    navigate(`/product/${product.id}`, { state: { product } });
+    navigate(`/product/${product.id}`, { state: { product, from: '/men' } });
   };
 
   // Shirts Data
@@ -265,7 +265,7 @@ const Mens = () => {
               </div>
 
               {/* Cards Grid with updated card design */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {section.data.map((item) => (
                   <div
                     key={item.id}

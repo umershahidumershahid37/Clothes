@@ -9,7 +9,7 @@ const Informalshirts = () => {
 
   // Reusable helper function for product cards navigation
   const handleViewProduct = (product) => {
-    navigate('/formal-shirt-detail', { state: { product } });
+    navigate(`/product/${product.id}`, { state: { product, from: '/informal-shirts' } });
   };
 
   // Add to cart handler
@@ -20,146 +20,160 @@ const Informalshirts = () => {
   };
 
   // Formal Shirts Data
-  const formalShirts = [
+  const informalShirts = [
     {
-      id: "formal-1",
-      name: "Classic Executive White Shirt",
-      price: "Rs. 3,490",
-      category: "Formal Shirts",
-      material: "100% Premium Cotton",
-      fit: "Slim Fit",
+      id: "informal-1",
+      name: "Classic Casual Blue Shirt",
+      price: "Rs. 1,990",
+      originalPrice: "Rs. 2,990",
+      category: "Informal Shirts",
+      material: "100% Cotton",
+      fit: "Relaxed Fit",
       image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&q=80&w=500",
-      description: "A timeless classic executive white shirt tailored for supreme comfort and professional elegance."
+      description: "A timeless casual blue shirt perfect for weekend outings and relaxed gatherings."
     },
     {
-      id: "formal-2",
-      name: "Midnight Blue Formal Shirt",
-      price: "Rs. 3,690",
-      category: "Formal Shirts",
+      id: "informal-2",
+      name: "Rust Orange Casual Shirt",
+      price: "Rs. 2,090",
+      originalPrice: "Rs. 3,090",
+      category: "Informal Shirts",
       material: "Cotton Blend",
       fit: "Regular Fit",
       image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&q=80&w=500",
-      description: "Sophisticated midnight blue shirt designed to make a strong impression at business meetings."
+      description: "A vibrant orange casual shirt designed for comfortable everyday wear and casual styling."
     },
     {
-      id: "formal-3",
-      name: "Charcoal Grey Formal Shirt",
-      price: "Rs. 3,890",
-      category: "Formal Shirts",
-      material: "Fine Twill Cotton",
-      fit: "Tailored Fit",
+      id: "informal-3",
+      name: "Olive Green Casual Shirt",
+      price: "Rs. 2,190",
+      originalPrice: "Rs. 3,190",
+      category: "Informal Shirts",
+      material: "Cotton Twill",
+      fit: "Relaxed Fit",
       image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=500",
-      description: "Sleek charcoal grey formal shirt offering durability and a sharp, modern silhouette."
+      description: "A stylish olive green casual shirt perfect for layering and relaxed weekend looks."
     },
     {
-      id: "formal-4",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "informal-4",
+      name: "Sky Blue Casual Shirt",
+      price: "Rs. 1,890",
+      originalPrice: "Rs. 2,890",
+      category: "Informal Shirts",
       material: "Cotton Rich",
-      fit: "Slim Fit",
+      fit: "Relaxed Fit",
       image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      description: "Professional casual shirt designed for everyday wear with enhanced breathability."
     },
     {
-      id: "formal-5",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "informal-5",
+      name: "Maroon Casual Shirt",
+      price: "Rs. 1,990",
+      originalPrice: "Rs. 2,990",
+      category: "Informal Shirts",
       material: "Cotton Rich",
-      fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      fit: "Regular Fit",
+      image: "https://images.unsplash.com/photo-1617457449829-17c79b4ebaaa?auto=format&fit=crop&q=80&w=500",
+      description: "Casual maroon shirt designed for everyday wear with enhanced breathability."
     },
     {
-      id: "formal-6",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "informal-6",
+      name: "Navy Blue Casual Shirt",
+      price: "Rs. 1,890",
+      originalPrice: "Rs. 2,890",
+      category: "Informal Shirts",
       material: "Cotton Rich",
-      fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      fit: "Relaxed Fit",
+      image: "https://images.unsplash.com/photo-1612036782180-69c0cecdbf51?auto=format&fit=crop&q=80&w=500",
+      description: "Casual navy blue shirt designed for everyday wear with enhanced breathability."
     },
     {
-      id: "formal-7",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "informal-7",
+      name: "White Casual Shirt",
+      price: "Rs. 1,790",
+      originalPrice: "Rs. 2,790",
+      category: "Informal Shirts",
       material: "Cotton Rich",
-      fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      fit: "Regular Fit",
+      image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=500",
+      description: "Casual white shirt designed for everyday wear with enhanced breathability."
     },
     {
-      id: "formal-8",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "informal-8",
+      name: "Black Casual Shirt",
+      price: "Rs. 1,990",
+      originalPrice: "Rs. 2,990",
+      category: "Informal Shirts",
       material: "Cotton Rich",
-      fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      fit: "Relaxed Fit",
+      image: "https://images.unsplash.com/photo-1559155260-a57d2e9e2407?auto=format&fit=crop&q=80&w=500",
+      description: "Casual black shirt designed for everyday wear with enhanced breathability."
     },
     {
-      id: "formal-9",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "informal-9",
+      name: "Beige Casual Shirt",
+      price: "Rs. 1,890",
+      originalPrice: "Rs. 2,890",
+      category: "Informal Shirts",
       material: "Cotton Rich",
-      fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      fit: "Regular Fit",
+      image: "https://images.unsplash.com/photo-1542272604-787c62d465d1?auto=format&fit=crop&q=80&w=500",
+      description: "Casual beige shirt designed for everyday wear with enhanced breathability."
     },
     {
-      id: "formal-10",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "informal-10",
+      name: "Cream Casual Shirt",
+      price: "Rs. 1,790",
+      originalPrice: "Rs. 2,790",
+      category: "Informal Shirts",
       material: "Cotton Rich",
-      fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      fit: "Relaxed Fit",
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=500",
+      description: "Casual cream shirt designed for everyday wear with enhanced breathability."
     },
     {
-      id: "formal-11",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "informal-11",
+      name: "Sea Green Casual Shirt",
+      price: "Rs. 2,090",
+      originalPrice: "Rs. 3,090",
+      category: "Informal Shirts",
       material: "Cotton Rich",
-      fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      fit: "Regular Fit",
+      image: "https://images.unsplash.com/photo-1605286372692-4d440d36fe3e?auto=format&fit=crop&q=80&w=500",
+      description: "Casual sea green shirt designed for everyday wear with enhanced breathability."
     },
     {
-      id: "formal-12",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "informal-12",
+      name: "Light Purple Casual Shirt",
+      price: "Rs. 1,990",
+      originalPrice: "Rs. 2,990",
+      category: "Informal Shirts",
       material: "Cotton Rich",
-      fit: "Slim Fit",
+      fit: "Relaxed Fit",
       image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      description: "Casual light purple shirt designed for everyday wear with enhanced breathability."
     },
     {
-      id: "formal-13",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "informal-13",
+      name: "Peach Casual Shirt",
+      price: "Rs. 1,890",
+      originalPrice: "Rs. 2,890",
+      category: "Informal Shirts",
       material: "Cotton Rich",
-      fit: "Slim Fit",
+      fit: "Regular Fit",
       image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      description: "Casual peach shirt designed for everyday wear with enhanced breathability."
     },
     {
-      id: "formal-14",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "informal-14",
+      name: "Khaki Casual Shirt",
+      price: "Rs. 1,990",
+      originalPrice: "Rs. 2,990",
+      category: "Informal Shirts",
       material: "Cotton Rich",
-      fit: "Slim Fit",
+      fit: "Relaxed Fit",
       image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      description: "Casual khaki shirt designed for everyday wear with enhanced breathability."
     }
   ];
 
@@ -195,7 +209,7 @@ const Informalshirts = () => {
             <div className="relative z-10 self-start md:self-center bg-neutral-900/90 border border-neutral-700/80 px-4 py-2.5 rounded-xl shadow-inner flex items-center gap-2.5">
               <span className="w-2 h-2 rounded-full bg-[#C5A059] animate-pulse"></span>
               <span className="text-xs sm:text-sm font-semibold tracking-wide text-neutral-200">
-                {formalShirts.length} Styles Available
+                {informalShirts.length} Styles Available
               </span>
             </div>
 
@@ -209,13 +223,13 @@ const Informalshirts = () => {
               Explore Collection
             </h2>
             <span className="text-xs font-semibold uppercase tracking-widest text-gray-400">
-              {formalShirts.length} Items Available
+              {informalShirts.length} Items Available
             </span>
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {formalShirts.map((product) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {informalShirts.map((product) => (
               <div
                 key={product.id}
                 className="bg-white flex flex-col justify-between group cursor-pointer border border-neutral-100 p-3 rounded-xl shadow-sm hover:shadow-md transition-all duration-300"

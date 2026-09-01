@@ -9,7 +9,7 @@ const Dresspants = () => {
 
   // Reusable helper function for product cards navigation
   const handleViewProduct = (product) => {
-    navigate('/formal-shirt-detail', { state: { product } });
+    navigate(`/product/${product.id}`, { state: { product, from: '/dress-pants' } });
   };
 
   // Add to cart handler
@@ -19,41 +19,51 @@ const Dresspants = () => {
     alert(`${product.name} added to cart successfully!`);
   };
 
-  // Formal Shirts Data
+  // Dress Pants Data
   const formalShirts = [
     {
-      id: "formal-1",
-      name: "Classic Executive White Shirt",
+      id: "pants-1",
+      name: "Classic Black Dress Pants",
       price: "Rs. 3,490",
-      category: "Formal Shirts",
-      material: "100% Premium Cotton",
+      category: "Dress Pants",
+      material: "100% Premium Wool",
       fit: "Slim Fit",
       image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&q=80&w=500",
-      description: "A timeless classic executive white shirt tailored for supreme comfort and professional elegance."
+      description: "A timeless classic black dress pants tailored for supreme comfort and professional elegance."
     },
     {
-      id: "formal-2",
-      name: "Midnight Blue Formal Shirt",
+      id: "pants-2",
+      name: "Navy Blue Formal Pants",
       price: "Rs. 3,690",
-      category: "Formal Shirts",
-      material: "Cotton Blend",
+      category: "Dress Pants",
+      material: "Wool Blend",
       fit: "Regular Fit",
       image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&q=80&w=500",
-      description: "Sophisticated midnight blue shirt designed to make a strong impression at business meetings."
+      description: "Sophisticated navy blue pants designed to make a strong impression at business meetings."
     },
     {
-      id: "formal-3",
-      name: "Charcoal Grey Formal Shirt",
+      id: "pants-3",
+      name: "Charcoal Grey Dress Pants",
       price: "Rs. 3,890",
-      category: "Formal Shirts",
-      material: "Fine Twill Cotton",
+      category: "Dress Pants",
+      material: "Fine Twill Wool",
       fit: "Tailored Fit",
       image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=500",
-      description: "Sleek charcoal grey formal shirt offering durability and a sharp, modern silhouette."
+      description: "Sleek charcoal grey pants offering durability and a sharp, modern silhouette."
     },
     {
-      id: "formal-4",
-      name: "Striped Corporate Shirt",
+      id: "pants-4",
+      name: "Grey Corporate Pants",
+      price: "Rs. 3,290",
+      category: "Dress Pants",
+      material: "Wool Rich",
+      fit: "Slim Fit",
+      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
+      description: "Professional grey pants designed for everyday office wear with enhanced breathability."
+    },
+    {
+      id: "pants-5",
+      name: "Brown Dress Pants",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
@@ -62,8 +72,8 @@ const Dresspants = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-5",
-      name: "Striped Corporate Shirt",
+      id: "pants-6",
+      name: "Olive Green Pants",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
@@ -72,8 +82,8 @@ const Dresspants = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-6",
-      name: "Striped Corporate Shirt",
+      id: "pants-7",
+      name: "Burgundy Dress Pants",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
@@ -82,8 +92,8 @@ const Dresspants = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-7",
-      name: "Striped Corporate Shirt",
+      id: "pants-8",
+      name: "Khaki Formal Pants",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
@@ -92,8 +102,8 @@ const Dresspants = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-8",
-      name: "Striped Corporate Shirt",
+      id: "pants-9",
+      name: "Slate Grey Pants",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
@@ -102,8 +112,8 @@ const Dresspants = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-9",
-      name: "Striped Corporate Shirt",
+      id: "pants-10",
+      name: "Cream Formal Pants",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
@@ -112,8 +122,8 @@ const Dresspants = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-10",
-      name: "Striped Corporate Shirt",
+      id: "pants-11",
+      name: "Forest Green Pants",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
@@ -122,8 +132,8 @@ const Dresspants = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-11",
-      name: "Striped Corporate Shirt",
+      id: "pants-12",
+      name: "Steel Blue Pants",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
@@ -132,8 +142,8 @@ const Dresspants = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-12",
-      name: "Striped Corporate Shirt",
+      id: "pants-13",
+      name: "Dark Purple Pants",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
@@ -142,18 +152,8 @@ const Dresspants = () => {
       description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-13",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
-      fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
-    },
-    {
-      id: "formal-14",
-      name: "Striped Corporate Shirt",
+      id: "pants-14",
+      name: "Taupe Dress Pants",
       price: "Rs. 3,290",
       category: "Formal Shirts",
       material: "Cotton Rich",
@@ -214,7 +214,7 @@ const Dresspants = () => {
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {formalShirts.map((product) => (
               <div
                 key={product.id}

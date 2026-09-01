@@ -9,7 +9,7 @@ const Denimjackets = () => {
 
   // Reusable helper function for product cards navigation
   const handleViewProduct = (product) => {
-    navigate('/formal-shirt-detail', { state: { product } });
+    navigate(`/product/${product.id}`, { state: { product, from: '/denim-jackets' } });
   };
 
   // Add to cart handler
@@ -19,147 +19,147 @@ const Denimjackets = () => {
     alert(`${product.name} added to cart successfully!`);
   };
 
-  // Formal Shirts Data
+  // Denim Jackets Data
   const formalShirts = [
     {
-      id: "formal-1",
-      name: "Classic Executive White Shirt",
+      id: "denim-1",
+      name: "Classic Light Blue Denim Jacket",
       price: "Rs. 3,490",
-      category: "Formal Shirts",
-      material: "100% Premium Cotton",
+      category: "Denim Jackets",
+      material: "100% Cotton Denim",
       fit: "Slim Fit",
       image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&q=80&w=500",
-      description: "A timeless classic executive white shirt tailored for supreme comfort and professional elegance."
+      description: "A timeless classic light blue denim jacket tailored for supreme comfort and casual elegance."
     },
     {
-      id: "formal-2",
-      name: "Midnight Blue Formal Shirt",
+      id: "denim-2",
+      name: "Dark Blue Denim Jacket",
       price: "Rs. 3,690",
-      category: "Formal Shirts",
-      material: "Cotton Blend",
+      category: "Denim Jackets",
+      material: "Cotton Denim Blend",
       fit: "Regular Fit",
       image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&q=80&w=500",
-      description: "Sophisticated midnight blue shirt designed to make a strong impression at business meetings."
+      description: "Sophisticated dark blue denim jacket designed for versatile casual wear."
     },
     {
-      id: "formal-3",
-      name: "Charcoal Grey Formal Shirt",
+      id: "denim-3",
+      name: "Black Denim Jacket",
       price: "Rs. 3,890",
-      category: "Formal Shirts",
-      material: "Fine Twill Cotton",
+      category: "Denim Jackets",
+      material: "Fine Denim Cotton",
       fit: "Tailored Fit",
       image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=500",
-      description: "Sleek charcoal grey formal shirt offering durability and a sharp, modern silhouette."
+      description: "Sleek black denim jacket offering durability and a sharp, modern look."
     },
     {
-      id: "formal-4",
-      name: "Striped Corporate Shirt",
+      id: "denim-4",
+      name: "Indigo Denim Jacket",
       price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      category: "Denim Jackets",
+      material: "Denim Rich",
       fit: "Slim Fit",
       image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      description: "Professional indigo denim jacket designed for everyday casual wear with style."
     },
     {
-      id: "formal-5",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
-      fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      id: "denim-5",
+      name: "Acid Wash Denim Jacket",
+      price: "Rs. 3,390",
+      category: "Denim Jackets",
+      material: "Denim Rich",
+      fit: "Regular Fit",
+      image: "https://images.unsplash.com/photo-1617457449829-17c79b4ebaaa?auto=format&fit=crop&q=80&w=500",
+      description: "Casual acid wash denim jacket designed for everyday wear with unique style."
     },
     {
-      id: "formal-6",
-      name: "Striped Corporate Shirt",
+      id: "denim-6",
+      name: "Distressed Denim Jacket",
       price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      category: "Denim Jackets",
+      material: "Denim Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1612036782180-69c0cecdbf51?auto=format&fit=crop&q=80&w=500",
+      description: "Professional distressed denim jacket designed for everyday wear with enhanced comfort."
     },
     {
-      id: "formal-7",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      id: "denim-7",
+      name: "Oversized Denim Jacket",
+      price: "Rs. 3,390",
+      category: "Denim Jackets",
+      material: "Denim Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=500",
+      description: "Professional oversized denim jacket designed for everyday wear with enhanced comfort."
     },
     {
-      id: "formal-8",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      id: "denim-8",
+      name: "Fitted Denim Jacket",
+      price: "Rs. 3,590",
+      category: "Denim Jackets",
+      material: "Denim Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1559155260-a57d2e9e2407?auto=format&fit=crop&q=80&w=500",
+      description: "Professional fitted denim jacket designed for everyday wear with enhanced comfort."
     },
     {
-      id: "formal-9",
-      name: "Striped Corporate Shirt",
+      id: "denim-9",
+      name: "Vintage Denim Jacket",
       price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      category: "Denim Jackets",
+      material: "Denim Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1542272604-787c62d465d1?auto=format&fit=crop&q=80&w=500",
+      description: "Professional vintage denim jacket designed for everyday wear with enhanced comfort."
     },
     {
-      id: "formal-10",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      id: "denim-10",
+      name: "Stone Wash Denim Jacket",
+      price: "Rs. 3,190",
+      category: "Denim Jackets",
+      material: "Denim Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=500",
+      description: "Professional stone wash denim jacket designed for everyday wear with enhanced comfort."
     },
     {
-      id: "formal-11",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
-      fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      id: "denim-11",
+      name: "Striped Denim Jacket",
+      price: "Rs. 3,490",
+      category: "Denim Jackets",
+      material: "Denim Rich",
+      fit: "Regular Fit",
+      image: "https://images.unsplash.com/photo-1605286372692-4d440d36fe3e?auto=format&fit=crop&q=80&w=500",
+      description: "Casual striped denim jacket designed for everyday wear with enhanced comfort."
     },
     {
-      id: "formal-12",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      id: "denim-12",
+      name: "Embroidered Denim Jacket",
+      price: "Rs. 3,390",
+      category: "Denim Jackets",
+      material: "Denim Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&q=80&w=500",
+      description: "Professional embroidered denim jacket designed for everyday wear with enhanced comfort."
     },
     {
-      id: "formal-13",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      id: "denim-13",
+      name: "Cropped Denim Jacket",
+      price: "Rs. 3,390",
+      category: "Denim Jackets",
+      material: "Denim Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1539533057440-7d8f3f86efb5?auto=format&fit=crop&q=80&w=500",
+      description: "Professional cropped denim jacket designed for everyday wear with enhanced comfort."
     },
     {
-      id: "formal-14",
-      name: "Striped Corporate Shirt",
+      id: "denim-14",
+      name: "Trucker Denim Jacket",
       price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      category: "Denim Jackets",
+      material: "Denim Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1503341333519-36bead3ac228?auto=format&fit=crop&q=80&w=500",
+      description: "Professional trucker denim jacket designed for everyday wear with enhanced comfort."
     }
   ];
 
@@ -214,7 +214,7 @@ const Denimjackets = () => {
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {formalShirts.map((product) => (
               <div
                 key={product.id}

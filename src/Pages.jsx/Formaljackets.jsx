@@ -9,7 +9,7 @@ const Formaljackets = () => {
 
   // Reusable helper function for product cards navigation
   const handleViewProduct = (product) => {
-    navigate('/formal-shirt-detail', { state: { product } });
+    navigate(`/product/${product.id}`, { state: { product, from: '/formal-jackets' } });
   };
 
   // Add to cart handler
@@ -19,147 +19,147 @@ const Formaljackets = () => {
     alert(`${product.name} added to cart successfully!`);
   };
 
-  // Formal Shirts Data
+  // Formal Jackets Data
   const formalShirts = [
     {
-      id: "formal-1",
-      name: "Classic Executive White Shirt",
-      price: "Rs. 3,490",
-      category: "Formal Shirts",
-      material: "100% Premium Cotton",
+      id: "jacket-1",
+      name: "Classic Black Blazer",
+      price: "Rs. 5,490",
+      category: "Formal Jackets",
+      material: "100% Premium Wool",
       fit: "Slim Fit",
       image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&q=80&w=500",
-      description: "A timeless classic executive white shirt tailored for supreme comfort and professional elegance."
+      description: "A timeless classic black blazer tailored for supreme comfort and professional elegance."
     },
     {
-      id: "formal-2",
-      name: "Midnight Blue Formal Shirt",
-      price: "Rs. 3,690",
-      category: "Formal Shirts",
-      material: "Cotton Blend",
+      id: "jacket-2",
+      name: "Navy Blue Blazer",
+      price: "Rs. 5,690",
+      category: "Formal Jackets",
+      material: "Wool Blend",
       fit: "Regular Fit",
       image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&q=80&w=500",
-      description: "Sophisticated midnight blue shirt designed to make a strong impression at business meetings."
+      description: "Sophisticated navy blue blazer designed to make a strong impression at business meetings."
     },
     {
-      id: "formal-3",
-      name: "Charcoal Grey Formal Shirt",
-      price: "Rs. 3,890",
-      category: "Formal Shirts",
-      material: "Fine Twill Cotton",
+      id: "jacket-3",
+      name: "Charcoal Grey Blazer",
+      price: "Rs. 5,890",
+      category: "Formal Jackets",
+      material: "Fine Twill Wool",
       fit: "Tailored Fit",
       image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=500",
-      description: "Sleek charcoal grey formal shirt offering durability and a sharp, modern silhouette."
+      description: "Sleek charcoal grey blazer offering durability and a sharp, modern silhouette."
     },
     {
-      id: "formal-4",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      id: "jacket-4",
+      name: "Brown Corporate Blazer",
+      price: "Rs. 5,290",
+      category: "Formal Jackets",
+      material: "Wool Rich",
       fit: "Slim Fit",
       image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      description: "Professional brown blazer designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-5",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
-      fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      id: "jacket-5",
+      name: "Maroon Blazer",
+      price: "Rs. 5,390",
+      category: "Formal Jackets",
+      material: "Wool Rich",
+      fit: "Regular Fit",
+      image: "https://images.unsplash.com/photo-1617457449829-17c79b4ebaaa?auto=format&fit=crop&q=80&w=500",
+      description: "Professional maroon blazer designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-6",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      id: "jacket-6",
+      name: "Grey Blazer",
+      price: "Rs. 5,290",
+      category: "Formal Jackets",
+      material: "Wool Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1612036782180-69c0cecdbf51?auto=format&fit=crop&q=80&w=500",
+      description: "Professional grey blazer designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-7",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      id: "jacket-7",
+      name: "Light Grey Blazer",
+      price: "Rs. 5,390",
+      category: "Formal Jackets",
+      material: "Wool Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=500",
+      description: "Professional light grey blazer designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-8",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      id: "jacket-8",
+      name: "Olive Blazer",
+      price: "Rs. 5,590",
+      category: "Formal Jackets",
+      material: "Wool Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1559155260-a57d2e9e2407?auto=format&fit=crop&q=80&w=500",
+      description: "Professional olive blazer designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-9",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      id: "jacket-9",
+      name: "Burgundy Blazer",
+      price: "Rs. 5,290",
+      category: "Formal Jackets",
+      material: "Wool Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1542272604-787c62d465d1?auto=format&fit=crop&q=80&w=500",
+      description: "Professional burgundy blazer designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-10",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      id: "jacket-10",
+      name: "Cream Blazer",
+      price: "Rs. 5,190",
+      category: "Formal Jackets",
+      material: "Wool Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=500",
+      description: "Professional cream blazer designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-11",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
-      fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      id: "jacket-11",
+      name: "Teal Blazer",
+      price: "Rs. 5,490",
+      category: "Formal Jackets",
+      material: "Wool Rich",
+      fit: "Regular Fit",
+      image: "https://images.unsplash.com/photo-1605286372692-4d440d36fe3e?auto=format&fit=crop&q=80&w=500",
+      description: "Professional teal blazer designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-12",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      id: "jacket-12",
+      name: "Azure Blazer",
+      price: "Rs. 5,390",
+      category: "Formal Jackets",
+      material: "Wool Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&q=80&w=500",
+      description: "Professional azure blazer designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-13",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      id: "jacket-13",
+      name: "Forest Green Blazer",
+      price: "Rs. 5,390",
+      category: "Formal Jackets",
+      material: "Wool Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1539533057440-7d8f3f86efb5?auto=format&fit=crop&q=80&w=500",
+      description: "Professional forest green blazer designed for everyday office wear with enhanced breathability."
     },
     {
-      id: "formal-14",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
-      material: "Cotton Rich",
+      id: "jacket-14",
+      name: "Slate Blazer",
+      price: "Rs. 5,290",
+      category: "Formal Jackets",
+      material: "Wool Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1503341333519-36bead3ac228?auto=format&fit=crop&q=80&w=500",
+      description: "Professional slate blazer designed for everyday office wear with enhanced breathability."
     }
   ];
 
@@ -214,7 +214,7 @@ const Formaljackets = () => {
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {formalShirts.map((product) => (
               <div
                 key={product.id}

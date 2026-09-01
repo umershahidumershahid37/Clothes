@@ -1,149 +1,169 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Lock, Mail, ArrowRight } from 'lucide-react';
+import { useNavigate, Link } from 'react-router-dom';
+import { Eye, EyeOff, Sparkles } from 'lucide-react';
+import { FcGoogle } from 'react-icons/fc';
+import { FaGithub } from 'react-icons/fa';
+import Navbar from '../Component/Navbar';
 
-const Login = () => {
+export default function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [lampOn, setLampOn] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Logging in with:', email, password);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      alert(`Welcome back, ${email}!`);
+      navigate('/');
+    }, 1500);
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto flex w-full max-w-md flex-col gap-8 rounded-3xl bg-white px-6 py-10 shadow-xl border border-neutral-200/80 sm:px-10 sm:py-12">
+    <div className="min-h-screen bg-[#0d0d0d] text-white flex flex-col transition-colors duration-500">
+      {/* Top Navbar */}
+      <Navbar />
+
+      {/* Main Container */}
+      <div className="relative flex-1 w-full max-w-6xl mx-auto flex items-center justify-center lg:justify-between px-4 sm:px-8 py-8 gap-12 overflow-hidden">
         
-        {/* Header & Logo */}
-        <div className="flex flex-col items-center text-center gap-3">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-neutral-900 shadow-lg border border-neutral-800">
-            <img 
-              src="/logo.jpg" 
-              alt="STITCHLAB Logo" 
-              className="h-full w-full rounded-2xl object-cover" 
-              onError={(e) => {
-                // Fallback agar image load na ho
-                e.target.style.display = 'none';
-              }}
-            />
-            <span className="text-[#b98a55] font-extrabold text-xl absolute hidden">SL</span>
+        {/* Lamp Section (Compact & Proportional to Login Card) */}
+        <div className="hidden lg:flex flex-col items-center relative w-[350px] h-[500px] justify-start pt-4">
+          {/* Lamp Fixture & Hanging Wire */}
+          <div className="w-1.5 h-16 bg-zinc-700"></div>
+          <div className="w-12 h-6 bg-zinc-800 rounded-b-full relative z-20 flex justify-center items-end">
+            <div className={`w-3 h-1.5 rounded-t-full transition-colors duration-300 ${lampOn ? 'bg-yellow-200 shadow-[0_0_10px_#fde047]' : 'bg-zinc-600'}`}></div>
           </div>
 
-          <div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900 uppercase">
-              Welcome Back
-            </h1>
-            <p className="mt-2 text-xs sm:text-sm text-neutral-500">
-              Sign in to access your STITCHLAB account & orders.
-            </p>
-          </div>
+          {/* Glowing Cone Light Effect matched to card height */}
+          {lampOn && (
+            <div 
+              className="absolute top-20 w-[320px] h-[400px] pointer-events-none z-10 transition-opacity duration-500"
+              style={{
+                background: 'linear-gradient(180deg, rgba(253, 224, 71, 0.35) 0%, rgba(253, 224, 71, 0.05) 70%, transparent 100%)',
+                clipPath: 'polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%)',
+                filter: 'blur(12px)'
+              }}
+            ></div>
+          )}
+
+          {/* Lamp Stand Pole */}
+          <div className="absolute top-22 w-2 h-[420px] bg-zinc-800 rounded-full"></div>
+          {/* Lamp Base */}
+          <div className="absolute bottom-4 w-36 h-5 bg-zinc-700 rounded-t-xl"></div>
+          
+          {/* Interactive Lamp Toggle Button */}
+          <button 
+            onClick={() => setLampOn(!lampOn)}
+            className="absolute bottom-6 z-30 px-3.5 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-[11px] text-yellow-400 border border-yellow-500/30 rounded-full transition cursor-pointer shadow-lg"
+          >
+            {lampOn ? 'Turn Off Lamp' : 'Turn On Lamp'}
+          </button>
         </div>
 
-        {/* Form */}
-        <form className="space-y-5" onSubmit={handleSubmit}>
-          <div className="space-y-4">
+        {/* Login Card Section */}
+        <div className="w-full lg:w-auto flex justify-center items-center z-20">
+          <div 
+            className={`w-full max-w-md bg-[#161618]/90 backdrop-blur-md p-8 sm:p-10 rounded-2xl border border-zinc-800 shadow-2xl relative transition-all duration-700 transform ${
+              lampOn 
+                ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto shadow-[0_0_30px_rgba(253,224,71,0.15)]' 
+                : 'opacity-0 scale-95 translate-y-6 pointer-events-none'
+            }`}
+          >
             
-            {/* Email Field */}
-            <div>
-              <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-1.5">
-                Email Address
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-neutral-400">
-                  <Mail size={18} />
-                </div>
-                <input
-                  id="email"
-                  type="email"
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/80 border border-zinc-700 text-yellow-400 text-xs font-semibold tracking-wider uppercase mb-3 shadow-sm">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>SECURE ACCESS</span>
+              </div>
+              <h2 className="text-3xl font-bold tracking-tight text-white mb-2">Welcome Back</h2>
+              <p className="text-sm text-zinc-400">Enter your credentials to access your account</p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label className="block text-xs font-medium text-zinc-400 mb-1.5 uppercase tracking-wider">Email Address</label>
+                <input 
+                  type="email" 
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@example.com"
-                  className="w-full rounded-xl border border-neutral-300 bg-neutral-50/50 pl-11 pr-4 py-3 text-xs sm:text-sm text-neutral-900 outline-none transition-all focus:bg-white focus:border-[#b98a55] focus:ring-2 focus:ring-[#b98a55]/20"
+                  className="w-full px-4 py-3 bg-zinc-900/80 border border-zinc-800 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 transition text-sm"
                 />
               </div>
-            </div>
 
-            {/* Password Field */}
-            <div>
-              <label htmlFor="password" className="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-1.5">
-                Password
-              </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-neutral-400">
-                  <Lock size={18} />
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="block text-xs font-medium text-zinc-400 uppercase tracking-wider">Password</label>
+                  <a href="#forgot" className="text-xs text-zinc-400 hover:text-yellow-400 transition">Forgot Password?</a>
                 </div>
-                <input
-                  id="password"
-                  type="password"
+                <input 
+                  type={showPassword ? 'text' : 'password'} 
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full rounded-xl border border-neutral-300 bg-neutral-50/50 pl-11 pr-4 py-3 text-xs sm:text-sm text-neutral-900 outline-none transition-all focus:bg-white focus:border-[#b98a55] focus:ring-2 focus:ring-[#b98a55]/20"
+                  className="w-full px-4 py-3 bg-zinc-900/80 border border-zinc-800 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 transition text-sm pr-10"
                 />
+                <button 
+                  type="button" 
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-9 text-zinc-500 hover:text-zinc-300 cursor-pointer"
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
               </div>
+
+              <div className="flex items-center text-xs text-zinc-400">
+                <label className="flex items-center gap-2 cursor-pointer select-none">
+                  <input type="checkbox" className="rounded bg-zinc-900 border-zinc-700 text-yellow-500 focus:ring-0 w-4 h-4" />
+                  <span>Remember me</span>
+                </label>
+              </div>
+
+              <button 
+                type="submit" 
+                disabled={loading}
+                className="w-full py-3.5 px-4 bg-yellow-500 hover:bg-yellow-400 text-zinc-950 font-bold rounded-xl transition duration-200 flex items-center justify-center shadow-lg shadow-yellow-500/10 cursor-pointer text-sm tracking-wide"
+              >
+                {loading ? (
+                  <span className="w-5 h-5 border-2 border-zinc-950 border-t-transparent rounded-full animate-spin"></span>
+                ) : (
+                  'Sign In'
+                )}
+              </button>
+            </form>
+
+            <div className="relative my-6 text-center">
+              <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-zinc-800"></div></div>
+              <span className="relative px-3 bg-[#161618] text-xs text-zinc-500 uppercase">Or continue with</span>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <button onClick={() => alert('Google login clicked')} className="flex items-center justify-center gap-2 py-2.5 px-4 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 rounded-xl text-sm font-medium transition cursor-pointer">
+                <FcGoogle size={18} /> Google
+              </button>
+              <button onClick={() => alert('GitHub login clicked')} className="flex items-center justify-center gap-2 py-2.5 px-4 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 rounded-xl text-sm font-medium transition cursor-pointer">
+                <FaGithub size={18} /> GitHub
+              </button>
+            </div>
+
+            <div className="mt-6 text-center text-xs text-zinc-400">
+              Don't have an account?{' '}
+              <Link to="/signup" className="text-yellow-400 font-semibold hover:underline">
+                Create account
+              </Link>
             </div>
 
           </div>
-
-          {/* Remember me & Forgot Password */}
-          <div className="flex items-center justify-between text-xs sm:text-sm">
-            <label className="inline-flex items-center gap-2 text-neutral-600 cursor-pointer">
-              <input type="checkbox" className="h-4 w-4 rounded border-neutral-300 text-[#b98a55] focus:ring-[#b98a55]" />
-              Remember me
-            </label>
-            <a href="#forgot" className="font-semibold text-neutral-900 hover:text-[#b98a55] transition-colors">
-              Forgot password?
-            </a>
-          </div>
-
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full rounded-xl bg-neutral-900 hover:bg-[#b98a55] text-white px-5 py-3.5 text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center gap-2 group"
-          >
-            Sign In
-            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-          </button>
-        </form>
-
-        {/* Divider */}
-        <div className="relative my-1">
-          <div className="absolute inset-0 flex items-center" aria-hidden="true">
-            <div className="w-full border-t border-neutral-200" />
-          </div>
-          <div className="relative flex justify-center text-xs uppercase tracking-widest text-neutral-400 bg-white px-3">
-            Or continue with
-          </div>
         </div>
-
-        {/* Google Sign In */}
-        <button
-          type="button"
-          className="flex w-full items-center justify-center gap-3 rounded-xl border border-neutral-300 bg-white px-4 py-3 text-xs sm:text-sm font-semibold text-neutral-700 shadow-sm transition-all hover:bg-neutral-50 hover:border-neutral-400"
-        >
-          <svg className="h-4 w-4" viewBox="0 0 24 24">
-            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-          </svg>
-          Sign in with Google
-        </button>
-
-        {/* Register Link */}
-        <p className="text-center text-xs sm:text-sm text-neutral-500">
-          Don't have an account?{' '}
-          <Link to="/register" className="font-bold text-neutral-900 hover:text-[#b98a55] underline transition-colors">
-            Register
-          </Link>
-        </p>
 
       </div>
     </div>
   );
-};
-
-export default Login;
+}

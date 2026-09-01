@@ -9,7 +9,7 @@ const Normalshorts = () => {
 
   // Reusable helper function for product cards navigation
   const handleViewProduct = (product) => {
-    navigate('/formal-shirt-detail', { state: { product } });
+    navigate(`/product/${product.id}`, { state: { product, from: '/normal-shorts' } });
   };
 
   // Add to cart handler
@@ -19,147 +19,147 @@ const Normalshorts = () => {
     alert(`${product.name} added to cart successfully!`);
   };
 
-  // Formal Shirts Data
+  // Normal Shorts Data
   const formalShirts = [
     {
-      id: "formal-1",
-      name: "Classic Executive White Shirt",
+      id: "shorts-1",
+      name: "Classic Blue Shorts",
       price: "Rs. 3,490",
-      category: "Formal Shirts",
+      category: "Normal Shorts",
       material: "100% Premium Cotton",
       fit: "Slim Fit",
       image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&q=80&w=500",
-      description: "A timeless classic executive white shirt tailored for supreme comfort and professional elegance."
+      description: "A timeless classic blue shorts design for relaxed comfort and a stylish everyday look."
     },
     {
-      id: "formal-2",
-      name: "Midnight Blue Formal Shirt",
+      id: "shorts-2",
+      name: "Casual Black Shorts",
       price: "Rs. 3,690",
-      category: "Formal Shirts",
+      category: "Normal Shorts",
       material: "Cotton Blend",
       fit: "Regular Fit",
       image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&q=80&w=500",
-      description: "Sophisticated midnight blue shirt designed to make a strong impression at business meetings."
+      description: "A sleek black shorts option built for versatile casual wear and all-day comfort."
     },
     {
-      id: "formal-3",
-      name: "Charcoal Grey Formal Shirt",
+      id: "shorts-3",
+      name: "Navy Casual Shorts",
       price: "Rs. 3,890",
-      category: "Formal Shirts",
+      category: "Normal Shorts",
       material: "Fine Twill Cotton",
       fit: "Tailored Fit",
       image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=500",
-      description: "Sleek charcoal grey formal shirt offering durability and a sharp, modern silhouette."
+      description: "Smart navy shorts that combine clean tailoring with ease of movement."
     },
     {
-      id: "formal-4",
-      name: "Striped Corporate Shirt",
+      id: "shorts-4",
+      name: "Grey Casual Shorts",
       price: "Rs. 3,290",
-      category: "Formal Shirts",
+      category: "Normal Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
       image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      description: "Lightweight grey shorts for a clean, minimal style during warm weather."
     },
     {
-      id: "formal-5",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "shorts-5",
+      name: "Khaki Shorts",
+      price: "Rs. 3,190",
+      category: "Normal Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1617457449829-17c79b4ebaaa?auto=format&fit=crop&q=80&w=500",
+      description: "Classic khaki shorts designed for effortless styling and all-day comfort."
     },
     {
-      id: "formal-6",
-      name: "Striped Corporate Shirt",
+      id: "shorts-6",
+      name: "Olive Green Shorts",
       price: "Rs. 3,290",
-      category: "Formal Shirts",
+      category: "Normal Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1612036782180-69c0cecdbf51?auto=format&fit=crop&q=80&w=500",
+      description: "A refined olive tone that enhances casual outfits with understated confidence."
     },
     {
-      id: "formal-7",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "shorts-7",
+      name: "Brown Shorts",
+      price: "Rs. 3,390",
+      category: "Normal Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=500",
+      description: "Earthy brown shorts offering a comfortable, relaxed silhouette for daily wear."
     },
     {
-      id: "formal-8",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "shorts-8",
+      name: "White Shorts",
+      price: "Rs. 3,490",
+      category: "Normal Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1559155260-a57d2e9e2407?auto=format&fit=crop&q=80&w=500",
+      description: "Fresh white shorts for easy summer styling and effortless cooling."
     },
     {
-      id: "formal-9",
-      name: "Striped Corporate Shirt",
+      id: "shorts-9",
+      name: "Beige Shorts",
       price: "Rs. 3,290",
-      category: "Formal Shirts",
+      category: "Normal Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1542272604-787c62d465d1?auto=format&fit=crop&q=80&w=500",
+      description: "Soft beige shorts that balance comfort, polish, and everyday flexibility."
     },
     {
-      id: "formal-10",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "shorts-10",
+      name: "Cream Shorts",
+      price: "Rs. 3,190",
+      category: "Normal Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=500",
+      description: "A crisp cream shorts look for relaxed days and warm-weather comfort."
     },
     {
-      id: "formal-11",
-      name: "Striped Corporate Shirt",
+      id: "shorts-11",
+      name: "Green Shorts",
       price: "Rs. 3,290",
-      category: "Formal Shirts",
+      category: "Normal Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1605286372692-4d440d36fe3e?auto=format&fit=crop&q=80&w=500",
+      description: "Lively green shorts suited for casual outings and comfort-first styling."
     },
     {
-      id: "formal-12",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "shorts-12",
+      name: "Purple Shorts",
+      price: "Rs. 3,390",
+      category: "Normal Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&q=80&w=500",
+      description: "A bold purple shorts option for a standout casual summer wardrobe."
     },
     {
-      id: "formal-13",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "shorts-13",
+      name: "Red Shorts",
+      price: "Rs. 3,490",
+      category: "Normal Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1539533057440-7d8f3f86efb5?auto=format&fit=crop&q=80&w=500",
+      description: "Energetic red shorts designed for comfort and a confident street-ready look."
     },
     {
-      id: "formal-14",
-      name: "Striped Corporate Shirt",
+      id: "shorts-14",
+      name: "Maroon Shorts",
       price: "Rs. 3,290",
-      category: "Formal Shirts",
+      category: "Normal Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1503341333519-36bead3ac228?auto=format&fit=crop&q=80&w=500",
+      description: "Rich maroon shorts with a modern fit and a clean, refined silhouette."
     }
   ];
 
@@ -214,7 +214,7 @@ const Normalshorts = () => {
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {formalShirts.map((product) => (
               <div
                 key={product.id}

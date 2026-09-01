@@ -9,7 +9,7 @@ const Threefourshorts = () => {
 
   // Reusable helper function for product cards navigation
   const handleViewProduct = (product) => {
-    navigate('/formal-shirt-detail', { state: { product } });
+    navigate(`/product/${product.id}`, { state: { product, from: '/three-four-shorts' } });
   };
 
   // Add to cart handler
@@ -19,147 +19,147 @@ const Threefourshorts = () => {
     alert(`${product.name} added to cart successfully!`);
   };
 
-  // Formal Shirts Data
+  // 3/4 Shorts Data
   const formalShirts = [
     {
-      id: "formal-1",
-      name: "Classic Executive White Shirt",
-      price: "Rs. 3,490",
-      category: "Formal Shirts",
-      material: "100% Premium Cotton",
-      fit: "Slim Fit",
+      id: "3qshorts-1",
+      name: "Classic Blue 3/4 Shorts",
+      price: "Rs. 2,490",
+      category: "3/4 Shorts",
+      material: "100% Cotton",
+      fit: "Regular Fit",
       image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&q=80&w=500",
-      description: "A timeless classic executive white shirt tailored for supreme comfort and professional elegance."
+      description: "A timeless classic 3/4 shorts tailored for comfort and style."
     },
     {
-      id: "formal-2",
-      name: "Midnight Blue Formal Shirt",
-      price: "Rs. 3,690",
-      category: "Formal Shirts",
+      id: "3qshorts-2",
+      name: "Navy 3/4 Shorts",
+      price: "Rs. 2,690",
+      category: "3/4 Shorts",
       material: "Cotton Blend",
       fit: "Regular Fit",
       image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&q=80&w=500",
-      description: "Sophisticated midnight blue shirt designed to make a strong impression at business meetings."
+      description: "Sophisticated navy 3/4 shorts designed for versatile wear."
     },
     {
-      id: "formal-3",
-      name: "Charcoal Grey Formal Shirt",
-      price: "Rs. 3,890",
-      category: "Formal Shirts",
-      material: "Fine Twill Cotton",
+      id: "3qshorts-3",
+      name: "Grey 3/4 Shorts",
+      price: "Rs. 2,890",
+      category: "3/4 Shorts",
+      material: "Cotton Twill",
       fit: "Tailored Fit",
       image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=500",
-      description: "Sleek charcoal grey formal shirt offering durability and a sharp, modern silhouette."
+      description: "Sleek grey 3/4 shorts offering durability and style."
     },
     {
-      id: "formal-4",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "3qshorts-4",
+      name: "Khaki 3/4 Shorts",
+      price: "Rs. 2,290",
+      category: "3/4 Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
       image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      description: "Professional khaki 3/4 shorts designed for everyday wear."
     },
     {
-      id: "formal-5",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "3qshorts-5",
+      name: "Brown 3/4 Shorts",
+      price: "Rs. 2,390",
+      category: "3/4 Shorts",
       material: "Cotton Rich",
-      fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      fit: "Regular Fit",
+      image: "https://images.unsplash.com/photo-1617457449829-17c79b4ebaaa?auto=format&fit=crop&q=80&w=500",
+      description: "Casual brown 3/4 shorts for everyday wear."
     },
     {
-      id: "formal-6",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "3qshorts-6",
+      name: "Olive 3/4 Shorts",
+      price: "Rs. 2,290",
+      category: "3/4 Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1612036782180-69c0cecdbf51?auto=format&fit=crop&q=80&w=500",
+      description: "Professional olive 3/4 shorts with enhanced comfort."
     },
     {
-      id: "formal-7",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "3qshorts-7",
+      name: "Black 3/4 Shorts",
+      price: "Rs. 2,390",
+      category: "3/4 Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=500",
+      description: "Professional black 3/4 shorts designed for everyday wear."
     },
     {
-      id: "formal-8",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "3qshorts-8",
+      name: "Cream 3/4 Shorts",
+      price: "Rs. 2,590",
+      category: "3/4 Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1559155260-a57d2e9e2407?auto=format&fit=crop&q=80&w=500",
+      description: "Professional cream 3/4 shorts designed for everyday wear."
     },
     {
-      id: "formal-9",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "3qshorts-9",
+      name: "Beige 3/4 Shorts",
+      price: "Rs. 2,290",
+      category: "3/4 Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1542272604-787c62d465d1?auto=format&fit=crop&q=80&w=500",
+      description: "Professional beige 3/4 shorts designed for everyday wear."
     },
     {
-      id: "formal-10",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "3qshorts-10",
+      name: "Tan 3/4 Shorts",
+      price: "Rs. 2,190",
+      category: "3/4 Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=500",
+      description: "Professional tan 3/4 shorts designed for everyday wear."
     },
     {
-      id: "formal-11",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "3qshorts-11",
+      name: "Teal 3/4 Shorts",
+      price: "Rs. 2,490",
+      category: "3/4 Shorts",
       material: "Cotton Rich",
-      fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      fit: "Regular Fit",
+      image: "https://images.unsplash.com/photo-1605286372692-4d440d36fe3e?auto=format&fit=crop&q=80&w=500",
+      description: "Casual teal 3/4 shorts designed for everyday wear."
     },
     {
-      id: "formal-12",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "3qshorts-12",
+      name: "Azure 3/4 Shorts",
+      price: "Rs. 2,390",
+      category: "3/4 Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&q=80&w=500",
+      description: "Professional azure 3/4 shorts designed for everyday wear."
     },
     {
-      id: "formal-13",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "3qshorts-13",
+      name: "Burgundy 3/4 Shorts",
+      price: "Rs. 2,390",
+      category: "3/4 Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1539533057440-7d8f3f86efb5?auto=format&fit=crop&q=80&w=500",
+      description: "Professional burgundy 3/4 shorts designed for everyday wear."
     },
     {
-      id: "formal-14",
-      name: "Striped Corporate Shirt",
-      price: "Rs. 3,290",
-      category: "Formal Shirts",
+      id: "3qshorts-14",
+      name: "Slate 3/4 Shorts",
+      price: "Rs. 2,290",
+      category: "3/4 Shorts",
       material: "Cotton Rich",
       fit: "Slim Fit",
-      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=500",
-      description: "Professional striped shirt designed for everyday office wear with enhanced breathability."
+      image: "https://images.unsplash.com/photo-1503341333519-36bead3ac228?auto=format&fit=crop&q=80&w=500",
+      description: "Professional slate 3/4 shorts designed for everyday wear."
     }
   ];
 
@@ -214,7 +214,7 @@ const Threefourshorts = () => {
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {formalShirts.map((product) => (
               <div
                 key={product.id}

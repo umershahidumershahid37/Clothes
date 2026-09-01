@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Minus, Plus, Trash2 } from 'lucide-react';
+import { useCart } from './CartContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { items, updateQuantity, removeItem, itemCount, subtotal } = useCart();
+
+  const cartSummary = useMemo(
+    () => items.slice(0, 3),
+    [items]
+  );
 
   return (
     <nav className="w-full bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
@@ -38,11 +47,21 @@ const Navbar = () => {
               </svg>
             </Link>
             
-            <Link to="/cart" aria-label="Cart" className="hover:text-black p-2 relative transition-colors">
+            <button
+              type="button"
+              onClick={() => setIsCartOpen((prev) => !prev)}
+              aria-label="Cart"
+              className="hover:text-black p-2 relative transition-colors"
+            >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
-            </Link>
+              {itemCount > 0 && (
+                <span className="absolute -top-1 -right-1 flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-[#C5A059] px-1 text-[10px] font-bold text-white">
+                  {itemCount}
+                </span>
+              )}
+            </button>
             
             <Link 
               to="/login" 
@@ -65,6 +84,79 @@ const Navbar = () => {
 
         </div>
       </div>
+
+      {isCartOpen && (
+        <div className="fixed inset-0 z-50 flex justify-end bg-black/40">
+          <div className="h-full w-full max-w-md bg-white shadow-2xl">
+            <div className="flex items-center justify-between border-b border-neutral-200 px-5 py-4">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#C5A059]">Cart</p>
+                <h3 className="text-xl font-black uppercase tracking-tight text-neutral-900">Your Basket</h3>
+              </div>
+              <button type="button" onClick={() => setIsCartOpen(false)} className="text-2xl font-light text-neutral-500 hover:text-black">
+                ×
+              </button>
+            </div>
+
+            <div className="flex h-[calc(100%-140px)] flex-col overflow-y-auto p-4">
+              {items.length === 0 ? (
+                <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 text-center p-6">
+                  <p className="text-lg font-black uppercase tracking-tight text-neutral-900">Your cart is empty</p>
+                  <p className="mt-2 text-sm text-neutral-600">Add items to see them here.</p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {items.map((item) => (
+                    <div key={item.id} className="rounded-2xl border border-neutral-200 bg-white p-3 shadow-sm">
+                      <div className="flex gap-3">
+                        <img src={item.image} alt={item.name} className="h-20 w-16 rounded-xl object-cover" />
+                        <div className="flex-1">
+                          <div className="flex items-start justify-between gap-2">
+                            <div>
+                              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C5A059]">{item.category}</p>
+                              <h4 className="mt-1 text-sm font-black text-neutral-900">{item.name}</h4>
+                            </div>
+                            <button type="button" onClick={() => removeItem(item.id)} className="text-neutral-400 hover:text-red-500">
+                              <Trash2 size={15} />
+                            </button>
+                          </div>
+                          <div className="mt-2 flex items-center justify-between">
+                            <div className="flex items-center gap-2 rounded-full border border-neutral-200 bg-neutral-50 px-1.5 py-1">
+                              <button type="button" onClick={() => updateQuantity(item.id, item.quantity - 1)} className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-[#C5A059] hover:text-white">
+                                <Minus size={12} />
+                              </button>
+                              <span className="min-w-[1.5rem] text-center text-xs font-bold text-neutral-800">{item.quantity}</span>
+                              <button type="button" onClick={() => updateQuantity(item.id, item.quantity + 1)} className="flex h-6 w-6 items-center justify-center rounded-full hover:bg-[#C5A059] hover:text-white">
+                                <Plus size={12} />
+                              </button>
+                            </div>
+                            <span className="text-sm font-black text-[#C5A059]">{Number(item.price) * Number(item.quantity)}</span>
+                          </div>
+                          <p className="mt-2 text-[11px] text-neutral-500">Size: {item.size}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="border-t border-neutral-200 bg-neutral-50 p-4">
+              <div className="flex items-center justify-between text-sm text-neutral-700">
+                <span>Subtotal</span>
+                <span className="font-bold text-neutral-900">{subtotal}</span>
+              </div>
+              <Link
+                to="/cart"
+                onClick={() => setIsCartOpen(false)}
+                className="mt-4 block w-full rounded-xl bg-neutral-900 px-4 py-3 text-center text-xs font-bold uppercase tracking-[0.2em] text-white transition hover:bg-[#C5A059]"
+              >
+                View Cart
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* 5. Professional Mobile Drawer Sidebar */}
       {isOpen && (
