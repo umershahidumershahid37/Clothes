@@ -1,22 +1,21 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Minus, Plus, Trash2 } from 'lucide-react';
+import { Heart, Minus, Plus, Trash2 } from 'lucide-react';
 import { useCart } from './CartContext';
+import { useWishlist } from './WishlistContext';
+
+const formatPrice = (value) => `Rs. ${Number(value || 0).toLocaleString('en-PK')}`;
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { items, updateQuantity, removeItem, itemCount, subtotal } = useCart();
-
-  const cartSummary = useMemo(
-    () => items.slice(0, 3),
-    [items]
-  );
+  const { itemCount: wishlistCount } = useWishlist();
 
   return (
     <nav className="w-full bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 w-full">
-        <div className="flex items-center justify-between h-16 sm:h-20 md:h-[100px]">
+      <div className="mx-auto w-full max-w-7xl px-3 sm:px-5 lg:px-8">
+        <div className="flex h-16 items-center justify-between sm:h-20 lg:h-[100px]">
           
           {/* 1. Logo Section */}
           <div className="flex items-center shrink-0">
@@ -24,13 +23,14 @@ const Navbar = () => {
               <img 
                 src="/logo.jpg" 
                 alt="Stitch Craft Logo" 
-                className="w-10 h-10 sm:w-12 sm:h-12 md:w-[80px] md:h-[80px] rounded-full object-cover border-2 border-gray-100 shadow-sm" 
+                className="h-10 w-10 rounded-full border-2 border-gray-100 object-cover shadow-sm sm:h-12 sm:w-12 lg:h-20 lg:w-20" 
               />
             </Link>
+
           </div>
 
           {/* 2. Desktop Links */}
-          <div className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8 text-xs lg:text-sm font-medium">
+          <div className="hidden lg:flex items-center gap-5 text-xs font-medium xl:gap-8 xl:text-sm">
             <Link to="/" className="text-gray-700 hover:text-black transition-colors py-2">HOME</Link>
             <Link to="/men" className="text-gray-700 hover:text-black transition-colors py-2">MEN</Link>
             <Link to="/collections" className="text-gray-700 hover:text-black transition-colors py-2">COLLECTIONS</Link>
@@ -40,11 +40,20 @@ const Navbar = () => {
           </div>
 
           {/* 3. Desktop Icons & Login Button */}
-          <div className="hidden md:flex items-center space-x-4 lg:space-x-6 text-gray-700">
-            <Link to="/account" aria-label="Account" className="hover:text-black p-2 transition-colors">
+          <div className="hidden lg:flex items-center gap-3 text-gray-700 xl:gap-5">
+            <Link to="/login" aria-label="Account" className="hover:text-black p-2 transition-colors">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
+            </Link>
+
+            <Link to="/wishlist" aria-label="Wishlist" className="relative flex items-center gap-2 px-3 py-2 text-sm font-semibold text-gray-700 transition-colors hover:text-black">
+              <Heart size={21} strokeWidth={2} />
+              {wishlistCount > 0 && (
+                <span className="absolute -right-1 -top-1 flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-[#C5A059] px-1 text-[10px] font-bold text-white">
+                  {wishlistCount}
+                </span>
+              )}
             </Link>
             
             <button
@@ -63,16 +72,25 @@ const Navbar = () => {
               )}
             </button>
             
-            <Link 
-              to="/login" 
-              className="px-6 py-2.5 text-sm font-semibold text-white bg-black rounded-lg hover:bg-gray-800 transition-all duration-200 shadow-sm"
-            >
-              Login
-            </Link>
           </div>
 
           {/* 4. Mobile Menu Toggle Button */}
-          <div className="flex md:hidden items-center">
+          <div className="flex items-center gap-0.5 lg:hidden">
+            <Link to="/login" aria-label="Account" className="p-2 text-gray-700 hover:text-black">
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </Link>
+            <Link to="/wishlist" aria-label="Wishlist" className="relative p-2 text-gray-700 hover:text-black">
+              <Heart size={23} />
+              {wishlistCount > 0 && <span className="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#C5A059] px-1 text-[9px] font-bold text-white">{wishlistCount}</span>}
+            </Link>
+            <Link to="/cart" aria-label="Cart" className="relative p-2 text-gray-700 hover:text-black">
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+              {itemCount > 0 && <span className="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#C5A059] px-1 text-[9px] font-bold text-white">{itemCount}</span>}
+            </Link>
             <button
               onClick={() => setIsOpen(true)}
               aria-label="Open Menu"
@@ -130,7 +148,7 @@ const Navbar = () => {
                                 <Plus size={12} />
                               </button>
                             </div>
-                            <span className="text-sm font-black text-[#C5A059]">{Number(item.price) * Number(item.quantity)}</span>
+                            <span className="text-sm font-black text-[#C5A059]">{formatPrice(Number(item.price) * Number(item.quantity))}</span>
                           </div>
                           <p className="mt-2 text-[11px] text-neutral-500">Size: {item.size}</p>
                         </div>
@@ -144,7 +162,7 @@ const Navbar = () => {
             <div className="border-t border-neutral-200 bg-neutral-50 p-4">
               <div className="flex items-center justify-between text-sm text-neutral-700">
                 <span>Subtotal</span>
-                <span className="font-bold text-neutral-900">{subtotal}</span>
+                <span className="font-bold text-neutral-900">{formatPrice(subtotal)}</span>
               </div>
               <Link
                 to="/cart"
@@ -172,7 +190,10 @@ const Navbar = () => {
             
             {/* Drawer Header */}
             <div className="flex items-center justify-between px-6 py-5 border-b border-gray-200">
-              <span className="font-bold text-lg text-gray-900">Menu</span>
+              <div className="flex items-center gap-3">
+                <img src="/logo.jpg" alt="Stitch Craft Logo" className="h-10 w-10 rounded-full border border-gray-200 object-cover" />
+                <span className="font-bold text-lg text-gray-900">Menu</span>
+              </div>
               <button
                 onClick={() => setIsOpen(false)}
                 aria-label="Close Menu"
@@ -195,11 +216,15 @@ const Navbar = () => {
             {/* Drawer Footer (Icons & Login) */}
             <div className="p-6 border-t border-gray-200 space-y-4 bg-gray-50">
               <div className="flex items-center justify-around text-gray-700">
-                <Link to="/account" onClick={() => setIsOpen(false)} aria-label="Account" className="hover:text-black p-2 flex items-center gap-2 text-sm font-medium">
+                <Link to="/login" onClick={() => setIsOpen(false)} aria-label="Account" className="hover:text-black p-2 flex items-center gap-2 text-sm font-medium">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                   Account
+                </Link>
+                <Link to="/wishlist" onClick={() => setIsOpen(false)} aria-label="Wishlist" className="relative flex items-center gap-2 p-2 text-sm font-medium hover:text-black">
+                  <Heart size={24} />
+                  {wishlistCount > 0 && <span className="flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-[#C5A059] px-1 text-[10px] font-bold text-white">{wishlistCount}</span>}
                 </Link>
                 <Link to="/cart" onClick={() => setIsOpen(false)} aria-label="Cart" className="hover:text-black p-2 flex items-center gap-2 text-sm font-medium">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

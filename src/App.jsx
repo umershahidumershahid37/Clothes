@@ -19,6 +19,7 @@ import Collections from './Pages.jsx/Collections'
 import About from './Pages.jsx/About'
 import Blog from './Pages.jsx/Blog'
 import CartPage from './Component/CartPage'
+import WishlistPage from './Component/WishlistPage'
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/men" element={<Mens />} />

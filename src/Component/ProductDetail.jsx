@@ -4,14 +4,22 @@ import { ShoppingBag, Heart, ShieldCheck, Truck, RotateCcw, Check, ArrowLeft } f
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { useCart } from './CartContext';
+import { useWishlist } from './WishlistContext';
 
 const ProductDetail = () => {
   const location = useLocation();
   const product = location.state?.product;
   const backRoute = location.state?.from || '/';
-  const [selectedSize, setSelectedSize] = useState(product?.fit || 'M');
+  const [selectedSize, setSelectedSize] = useState('M');
   const [quantity, setQuantity] = useState(1);
   const { addItem } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
+
+  const parsePrice = (value) => Number(String(value ?? '0').replace(/[^\d.]/g, '')) || 0;
+  const currentPrice = parsePrice(product?.price);
+  const originalPrice = parsePrice(product?.originalPrice || product?.price);
+  const discountAmount = Math.max(originalPrice - currentPrice, 0);
+  const discountPercent = originalPrice > currentPrice ? Math.round((discountAmount / originalPrice) * 100) : 0;
 
   if (!product) {
     return (
@@ -107,10 +115,17 @@ const ProductDetail = () => {
 
               {/* Price & Short Desc */}
               <div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 flex-wrap">
                   <p className="text-4xl font-extrabold text-[#C5A059]">{product.price}</p>
                   {product.originalPrice && (
-                    <p className="text-lg text-neutral-500 line-through">{product.originalPrice}</p>
+                    <>
+                      <p className="text-lg text-neutral-500 line-through">{product.originalPrice}</p>
+                      {discountPercent > 0 && (
+                        <span className="rounded-full bg-[#C5A059]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#C5A059]">
+                          Save {discountPercent}%
+                        </span>
+                      )}
+                    </>
                   )}
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-neutral-700">
@@ -185,8 +200,8 @@ const ProductDetail = () => {
                   <ShoppingBag size={18} />
                   Add to Cart
                 </button>
-                <button className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-[#C5A059] bg-white hover:bg-[#C5A059] hover:text-white px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#C5A059] transition-all">
-                  <Heart size={18} />
+                <button onClick={() => toggleWishlist(product)} className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-[#C5A059] bg-white hover:bg-[#C5A059] hover:text-white px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#C5A059] transition-all">
+                  <Heart size={18} className={isInWishlist(product.id) ? 'fill-red-500 text-red-500' : ''} />
                   Wishlist
                 </button>
               </div>

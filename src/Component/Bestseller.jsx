@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Heart } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useWishlist } from './WishlistContext';
 
 const products = [
   {
@@ -34,15 +35,7 @@ const products = [
 ];
 
 const Bestseller = () => {
-  // Wishlist state tracking for each product index
-  const [wishlist, setWishlist] = useState({});
-
-  const toggleWishlist = (index) => {
-    setWishlist((prev) => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
-  };
+  const { toggleWishlist, isInWishlist } = useWishlist();
 
   return (
     <section className="w-full bg-white px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
@@ -78,8 +71,8 @@ const Bestseller = () => {
 
         {/* PRODUCTS GRID */}
         <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:w-[76%] lg:grid-cols-4">
-          {products.map((product, index) => {
-            const isLiked = wishlist[index];
+          {products.map((product) => {
+            const isLiked = isInWishlist(product.id);
 
             return (
               <div
@@ -102,7 +95,7 @@ const Bestseller = () => {
 
                     {/* Heart Button */}
                     <button
-                      onClick={() => toggleWishlist(index)}
+                      onClick={() => toggleWishlist(product)}
                       className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300 hover:bg-white hover:scale-110 active:scale-95"
                       aria-label="Wishlist"
                     >
@@ -134,6 +127,7 @@ const Bestseller = () => {
                 <div className="p-4 sm:p-5 pt-0">
                   <Link
                     to={`/product/${product.id}`}
+                    state={{ product, from: '/' }}
                     className="w-full inline-flex items-center justify-center rounded-full bg-neutral-900 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white transition-all duration-300 hover:bg-[#b98a55] shadow-sm"
                   >
                     View Details

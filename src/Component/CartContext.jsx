@@ -35,7 +35,9 @@ export const CartProvider = ({ children }) => {
       size: selectedSize,
       quantity: Number(quantity) || 1,
       price: parsedPrice,
+      priceLabel: product.price || `Rs. ${parsedPrice}`,
       originalPrice: parsedOriginal,
+      originalPriceLabel: product.originalPrice || product.price || `Rs. ${parsedOriginal}`,
     };
 
     setItems((prevItems) => {

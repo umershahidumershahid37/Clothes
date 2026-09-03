@@ -3,9 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { Heart, Sparkles, ShoppingBag } from "lucide-react";
 import Navbar from "../Component/Navbar";
 import Sidebar from "../Component/Sidebar";
+import { useCart } from "../Component/CartContext";
+import { useWishlist } from "../Component/WishlistContext";
 
 const Dresspants = () => {
   const navigate = useNavigate();
+  const { addItem } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
 
   // Reusable helper function for product cards navigation
   const handleViewProduct = (product) => {
@@ -15,8 +19,7 @@ const Dresspants = () => {
   // Add to cart handler
   const handleAddToCart = (e, product) => {
     e.stopPropagation();
-    // Yahan aap apna cart ka logic ya state add kar sakte hain
-    alert(`${product.name} added to cart successfully!`);
+    addItem(product, 'M', 1);
   };
 
   // Dress Pants Data
@@ -229,11 +232,11 @@ const Dresspants = () => {
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
                   <button 
-                    onClick={(e) => { e.stopPropagation(); alert('Added to wishlist!'); }}
+                    onClick={(e) => { e.stopPropagation(); toggleWishlist(product); }}
                     className="absolute top-3 right-3 bg-white/90 backdrop-blur-md p-2 rounded-full shadow-sm hover:bg-white transition-all"
                     aria-label="Wishlist"
                   >
-                    <Heart className="w-4 h-4 text-gray-700 hover:text-red-500 transition-colors" />
+                    <Heart className={`w-4 h-4 transition-colors ${isInWishlist(product.id) ? 'fill-red-500 text-red-500' : 'text-gray-700 hover:text-red-500'}`} />
                   </button>
                 </div>
 

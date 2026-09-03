@@ -5,6 +5,8 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { useCart } from './CartContext';
 
+const formatPrice = (value) => `Rs. ${Number(value || 0).toLocaleString('en-PK')}`;
+
 const CartPage = () => {
   const { items, updateQuantity, removeItem, subtotal, itemCount } = useCart();
 
@@ -63,7 +65,7 @@ const CartPage = () => {
                         </div>
                         <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-600">
                           <span className="rounded-full border border-neutral-200 px-2 py-1 font-semibold">Size: {item.size}</span>
-                          <span className="rounded-full border border-neutral-200 px-2 py-1 font-semibold">Unit: {item.price}</span>
+                          <span className="rounded-full border border-neutral-200 px-2 py-1 font-semibold">Unit: {item.priceLabel || formatPrice(item.price)}</span>
                         </div>
                       </div>
 
@@ -90,7 +92,7 @@ const CartPage = () => {
 
                         <div className="flex items-center gap-3">
                           <p className="text-lg font-black text-[#C5A059]">
-                            {Number(item.price || 0) * Number(item.quantity || 0)}
+                            {formatPrice(Number(item.price || 0) * Number(item.quantity || 0))}
                           </p>
                           <button
                             type="button"
@@ -116,18 +118,18 @@ const CartPage = () => {
                   </div>
                   <div className="flex justify-between">
                     <span>Subtotal</span>
-                    <span>{subtotal}</span>
+                    <span>{formatPrice(subtotal)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Shipping</span>
-                    <span>{shipping === 0 ? 'Free' : shipping}</span>
+                    <span>{shipping === 0 ? 'Free' : formatPrice(shipping)}</span>
                   </div>
                 </div>
 
                 <div className="mt-5 rounded-2xl bg-neutral-100 p-4">
                   <div className="flex items-center justify-between text-base font-black text-neutral-900">
                     <span>Total</span>
-                    <span>{total}</span>
+                    <span>{formatPrice(total)}</span>
                   </div>
                 </div>
 

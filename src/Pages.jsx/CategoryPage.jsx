@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { Heart } from 'lucide-react';
 import Navbar from '../Component/Navbar';
 import Sidebar from '../Component/Sidebar';
+import { useWishlist } from '../Component/WishlistContext';
 
 const CategoryPage = ({ title = "Men's Collection", subtitle = "Explore our latest trendy collection", items }) => {
   const navigate = useNavigate();
+  const { toggleWishlist, isInWishlist } = useWishlist();
 
   // Agar props mein items na milein toh default 16 products show honge
   const defaultProducts = [
@@ -66,8 +68,8 @@ const CategoryPage = ({ title = "Men's Collection", subtitle = "Explore our late
                     alt={item.name}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
-                  <button className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors">
-                    <Heart className="w-4 h-4 text-gray-600 hover:text-red-500" />
+                  <button onClick={(event) => { event.stopPropagation(); toggleWishlist(item); }} className="absolute top-3 right-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors" aria-label="Wishlist">
+                    <Heart className={`w-4 h-4 ${isInWishlist(item.id) ? 'fill-red-500 text-red-500' : 'text-gray-600 hover:text-red-500'}`} />
                   </button>
                 </div>
 

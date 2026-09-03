@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { Heart, Sparkles } from "lucide-react";
 import Navbar from "../Component/Navbar";
 import Sidebar from "../Component/Sidebar";
+import { useWishlist } from "../Component/WishlistContext";
 
 const Mens = () => {
   const navigate = useNavigate();
+  const { toggleWishlist, isInWishlist } = useWishlist();
 
   // Reusable helper function for product cards navigation passing the full product state
   const handleViewProduct = (product) => {
@@ -280,10 +282,11 @@ const Mens = () => {
                         className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                       />
                       <button 
-                        onClick={(e) => { e.stopPropagation(); alert('Added to wishlist!'); }}
+                        onClick={(e) => { e.stopPropagation(); toggleWishlist(item); }}
                         className="absolute top-3 right-3 bg-white/90 backdrop-blur-md p-2 rounded-full shadow-sm hover:bg-white transition-all"
+                        aria-label="Wishlist"
                       >
-                        <Heart className="w-4 h-4 text-gray-700 hover:text-red-500 transition-colors" />
+                        <Heart className={`w-4 h-4 transition-colors ${isInWishlist(item.id) ? 'fill-red-500 text-red-500' : 'text-gray-700 hover:text-red-500'}`} />
                       </button>
                     </div>
 
