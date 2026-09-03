@@ -149,7 +149,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      placeholder="Muhammad Umer"
+                      placeholder="Name"
                       className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3.5 text-sm text-black focus:outline-none focus:border-[#C5A059] transition-colors shadow-sm"
                     />
                   </div>
@@ -165,7 +165,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      placeholder="example@gmail.com"
+                      placeholder="Email."
                       className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3.5 text-sm text-black focus:outline-none focus:border-[#C5A059] transition-colors shadow-sm"
                     />
                   </div>
@@ -182,7 +182,7 @@ const Contact = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="0329 4689180"
+                      placeholder="+92"
                       className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3.5 text-sm text-black focus:outline-none focus:border-[#C5A059] transition-colors shadow-sm"
                     />
                   </div>
@@ -198,7 +198,7 @@ const Contact = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      placeholder="Order Inquiry / Support"
+                      placeholder="Order Inquiry "
                       className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3.5 text-sm text-black focus:outline-none focus:border-[#C5A059] transition-colors shadow-sm"
                     />
                   </div>

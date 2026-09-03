@@ -213,36 +213,6 @@ const Navbar = () => {
               <Link to="/contact" onClick={() => setIsOpen(false)} className="block text-gray-800 hover:text-black font-semibold text-base py-2">CONTACT</Link>
             </div>
 
-            {/* Drawer Footer (Icons & Login) */}
-            <div className="p-6 border-t border-gray-200 space-y-4 bg-gray-50">
-              <div className="flex items-center justify-around text-gray-700">
-                <Link to="/login" onClick={() => setIsOpen(false)} aria-label="Account" className="hover:text-black p-2 flex items-center gap-2 text-sm font-medium">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                  Account
-                </Link>
-                <Link to="/wishlist" onClick={() => setIsOpen(false)} aria-label="Wishlist" className="relative flex items-center gap-2 p-2 text-sm font-medium hover:text-black">
-                  <Heart size={24} />
-                  {wishlistCount > 0 && <span className="flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-[#C5A059] px-1 text-[10px] font-bold text-white">{wishlistCount}</span>}
-                </Link>
-                <Link to="/cart" onClick={() => setIsOpen(false)} aria-label="Cart" className="hover:text-black p-2 flex items-center gap-2 text-sm font-medium">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                  </svg>
-                  Cart
-                </Link>
-              </div>
-
-              <Link 
-                to="/login" 
-                onClick={() => setIsOpen(false)}
-                className="block w-full text-center py-3 text-sm font-semibold text-white bg-black rounded-lg hover:bg-gray-800 transition-all duration-200 shadow-sm"
-              >
-                Login
-              </Link>
-            </div>
-
           </div>
         </div>
       )}
