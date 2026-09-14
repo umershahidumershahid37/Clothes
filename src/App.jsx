@@ -20,7 +20,7 @@ import About from './Pages.jsx/About'
 import Blog from './Pages.jsx/Blog'
 import CartPage from './Component/CartPage'
 import WishlistPage from './Component/WishlistPage'
-
+import Checkout from "./Component/Checkout";
 const App = () => {
   return (
     <Router>
@@ -44,7 +44,8 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/collections" element={<Collections />} />
         <Route path="/about" element={<About />} />
-<Route path="/blog" element={<Blog />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/checkout" element={<Checkout />} />
         
 
 
